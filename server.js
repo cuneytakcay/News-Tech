@@ -2,7 +2,7 @@
 const express = require('express')
 const logger = require('morgan')
 const bodyParser = require('body-parser')
-const mongoose = require("mongoose")
+const mongoose = require('mongoose')
 
 // Require modules
 const index = require('./routes/index')
@@ -11,10 +11,10 @@ const scrape = require('./routes/scrape')
 const app = express()
 
 // Handlebars view engine setup
-const exphbs = require("express-handlebars")
+const exphbs = require('express-handlebars')
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }))
-app.set("view engine", "handlebars")
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
+app.set('view engine', 'handlebars')
 
 app.use(logger('dev'))
 app.use(bodyParser.json())
@@ -26,9 +26,7 @@ app.use('/scrape', scrape)
 
 // Set mongoose to use promises
 mongoose.Promise = Promise;
-mongoose.connect("mongodb://localhost/newstech", {
-  useMongoClient: true
-})
+mongoose.connect('mongodb://localhost/newstech')
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

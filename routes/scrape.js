@@ -4,10 +4,12 @@ const router = express.Router()
 const cheerio = require( 'cheerio' )
 const request = require( 'request' )
 
+// Require models
+const db = require('../models')
+
 // GET route to scrape The Verge - Tech website
 router.get('/', ( req, res, next ) => {
 	const url = 'https://www.theverge.com/tech'
-	let results = []
 
 	request(url, (err, response, html) => {
 		if ( err ) throw err
@@ -15,16 +17,25 @@ router.get('/', ( req, res, next ) => {
 		const $ = cheerio.load(html)
 
 		$('.c-entry-box--compact__title').each((i, element) => {
-			const title = $(element).children('a').text()
-			const link = $(element).children('a').attr('href')
+			// Save empty object for scrape results
+			let results = {}
 
-			results.push({
-				title: title,
-				link: link
-			})	
+			// Get title and link of the article and store in the results object
+			results.title = $(element).children('a').text()
+			results.link = $(element).children('a').attr('href')
+
+			// Create a new Article by using the results object.
+			db.Article.create(results)
+				.then((dbArticle) => {
+					console.log(dbArticle)
+				})
+				.catch((err) => {
+					return res.json(err)
+				})
 		})
-		
-		res.json(results)
+
+		// Send a message to the client
+		res.send('Scrape completed!')
 	})
 })
 
