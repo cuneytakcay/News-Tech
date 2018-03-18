@@ -4,15 +4,10 @@ const logger = require('morgan')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 
-// Require modules
-const index = require('./routes/index')
-const scrape = require('./routes/scrape')
-
 const app = express()
 
 // Handlebars view engine setup
 const exphbs = require('express-handlebars')
-
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
@@ -20,6 +15,10 @@ app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('public'))
+
+// Require routes modules
+const index = require('./routes/index')
+const scrape = require('./routes/scrape')
 
 app.use('/', index)
 app.use('/scrape', scrape)
