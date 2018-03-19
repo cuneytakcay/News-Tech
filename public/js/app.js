@@ -3,15 +3,21 @@ $('#scraper').on('click', () => {
 	// and grabing the json results from /scrape api to display
 	$.getJSON('/scrape', (data) => {
 		for (var i = 0; i < data.length; i++) {
-			$('#list')
+			$('#article-container')
 				.append(`
-					<li>
+					<div>
 						<a href='${data[i].link}'>
 							${data[i].title}
 						</a>
-					</li>
+					</div>
 				`)	
 		}
 	})
 })
+
+
+
+
+
+
 
