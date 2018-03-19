@@ -1,8 +1,72 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-family: 'Raleway', sans-serif;
+}
+
+h1 {
+	font-size: 230%;
+	color: #fff;
+	border-bottom: 1px solid #28a745;
+	margin-bottom: 15px;
+	padding-bottom: 15px;
 }
 
 a {
-  color: #00B7FF;
+	color: #f00;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #ff0;
+	text-decoration: none;
+}
+
+/* ============== NAVBAR =============== */
+#nav-bar {
+	padding: 30px 50px;
+	background-color: #333;
+	border-bottom: 3px solid #f00;
+	box-shadow: 0 0 30px #000;
+	position: sticky;
+}
+
+#brand {
+	font-family: 'Limelight', cursive;
+	font-size: 160%;
+	color: #f00;
+}
+
+#scraper {
+	margin-left: 10px;
+}
+
+/* ============= TITLE BODY ============ */
+#title-div {
+	background-image: url("../img/back-img.jpeg");
+	background-position: center;
+	height: 350px;
+}
+
+#intro {
+	background-color: rgba(0, 0, 0, 0.7);
+	width: 60%;
+	margin: 10px auto;
+	border-radius: 10px;
+	padding: 20px;
+}
+
+#main-par {
+	font-size: 120%;
+	color: #bbb;
+}
+
+/* ============= ARTICLES ============== */
+#article-container {
+	width: 80%;
+	margin: 30px auto;
+}
+
+#article-container div {
+	padding: 15px 10px 10px 10px;
+	border-bottom: 1px solid #bbb;
 }
