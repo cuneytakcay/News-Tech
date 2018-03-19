@@ -1,1 +1,15 @@
-<h1>Hello {{title}}</h1>
+<h1>Hello {{ title }}</h1>
+
+<button id="scraper">Scraper</button>
+
+<div id="list">
+	<ul>
+		{{#each articles}}
+		<li>
+			{{ this.title }}
+		</li>
+		{{/each}}
+	</ul>
+</div>
+
+<script type="text/javascript" src="/js/app.js"></script>
