@@ -16,7 +16,7 @@ router.get('/', ( req, res, next ) => {
 		
 		const $ = cheerio.load(html)
 
-		let articles = []
+		//let articles = []
 
 		$('.c-entry-box--compact__title').each((i, element) => {
 			// Get title and link of the article and store in the article object
@@ -25,11 +25,18 @@ router.get('/', ( req, res, next ) => {
 				link: $(element).children('a').attr('href')
 			}
 
-			articles.push(article)
+			//articles.push(article)
+			db.Article.create(article)
+				.then((dbArticle) => {
+					console.log(dbArticle)
+				})
+				.catch((err) => {
+					return res.json(err)
+				})
 		})
 
 		// JSON all scraped articles
-		res.json(articles)
+		res.send('Scraping was completed!')
 	})
 })
 
