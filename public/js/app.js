@@ -9,6 +9,7 @@ $('#scraper').on('click', () => {
 						<a href='${data[i].link}'>
 							${data[i].title}
 						</a>
+						<button id="save-btn" class="btn btn-sm btn-primary float-right">Save article</button>
 					</div>
 				`)	
 		}
