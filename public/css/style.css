@@ -42,16 +42,16 @@ a:hover {
 
 /* ============= TITLE BODY ============ */
 #title-div {
-	background-image: url("../img/back-img.jpeg");
+	background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)), url("../img/back-img.jpeg");
 	background-position: center;
 	height: 350px;
 }
 
 #intro {
-	background-color: rgba(0, 0, 0, 0.7);
 	width: 60%;
 	margin: 10px auto;
-	border-radius: 10px;
+	border-radius: 50px 0;
+	border: 1px solid #28a745;
 	padding: 20px;
 }
 
