@@ -28,8 +28,8 @@ router.get('/', ( req, res, next ) => {
 			articles.push(article)
 		})
 
-		// Render articles list to the homepage
-		res.render('home', { articles: articles })
+		// JSON all scraped articles
+		res.json(articles)
 	})
 })
 
