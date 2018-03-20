@@ -5,7 +5,7 @@ $('#scraper').on('click', () => {
     url: '/scrape'
   }).then(data => {
       // Reload the page to get the updated list
-      location.reload()
+      location.assign('/')
       console.log('start scraping button sent ajax call');
     }
   )
