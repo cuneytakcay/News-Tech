@@ -25,10 +25,12 @@ app.use(logger('dev'))
 const index = require('./routes/index')
 const scrape = require('./routes/scrape')
 const article = require('./routes/articles')
+const note = require('./routes/notes')
 
 app.use('/', index)
 app.use('/scrape', scrape)
 app.use('/articles', article)
+app.use('/notes', note)
 
 // Set mongoose to use promises
 mongoose.Promise = Promise;
