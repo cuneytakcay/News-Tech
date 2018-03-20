@@ -15,11 +15,6 @@ const ArticleSchema = new Schema({
   link: {
     type: String,
     unique: true
-  },
-  // 'note' is an object that stores a Note id
-  note: {
-    type: Schema.Types.ObjectId,
-    ref: 'Note'
   }
 })
 
