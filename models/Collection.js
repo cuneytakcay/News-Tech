@@ -16,7 +16,7 @@ const CollectionSchema = new Schema({
     type: String,
     unique: true
   },
-  // 'notes' is an array of objects that stores a Note id
+  // 'notes' is objects that stores a Note id
   note: {
     type: Schema.Types.ObjectId,
     ref: 'Note'

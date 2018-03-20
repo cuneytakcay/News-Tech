@@ -62,15 +62,24 @@ $(document).on('click', '.delete-btn', function() {
 
 let articleId = null
 
-// When "Article Notes" is clicked, it saves the id of the article
+// When "Article Notes" is clicked, save the id of the article
+// Send an ajax call to populate notes
 $(document).on('click', '.add-note', function() {
 	// Save the id of the selected article
 	articleId = $(this).attr('data-id')
 
 	console.log(`articleId: ${articleId}`)
+
+	$.ajax({
+		method: 'GET',
+		url: '/articles',
+		data: { id: articleId }
+	}).then(data => {
+		console.log('Notes are populated')
+	})
 })
 
-// When "Save your note" button clicked in modal, send and ajax call to save it
+// When "Save your note" button clicked in modal, send an ajax call to save it
 $('.save-note').on('click', () => {
 	const title = $('#note-title').val().trim()
 	const body = $('#note-body').val().trim()
@@ -85,6 +94,9 @@ $('.save-note').on('click', () => {
 	}) 
 	console.log('Note saved')
 	console.log(`articleId: ${articleId}`)
+
+	$('#note-title').val('')
+	$('#note-body').val('')	
 })
 
 

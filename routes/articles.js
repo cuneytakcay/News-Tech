@@ -50,5 +50,19 @@ router.delete('/', (req, res, next) => {
     console.log(`Article with id: ${ req.body.id } deleted!`)
 })
 
+// GET route to populate all saved notes
+router.get('/', (req, res, next) => {
+  // Grab notes from notes
+  db.Collection.findOne({ _id: req.body.id })
+    .populate('note')
+    .then(dbCollection => {
+      res.send(dbCollection)
+    })
+    .catch(err => {
+      // If an error occurred, send it to the client
+      res.json(err)
+    })
+})
+
 // Export router
 module.exports = router
