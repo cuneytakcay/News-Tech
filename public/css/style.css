@@ -35,6 +35,13 @@ a:hover {
 	font-family: 'Limelight', cursive;
 	font-size: 160%;
 	color: #f00;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+#brand:hover {
+	color: #28a745;
+	box-shadow: 0 0 30px #28a745;
 }
 
 #scraper {
