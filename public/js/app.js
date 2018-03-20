@@ -60,6 +60,32 @@ $(document).on('click', '.delete-btn', function() {
 	}) 
 })
 
+let articleId = null
+
+// When "Article Notes" is clicked, it saves the id of the article
+$(document).on('click', '.add-note', function() {
+	// Save the id of the selected article
+	articleId = $(this).attr('data-id')
+
+	console.log(`articleId: ${articleId}`)
+})
+
+// When "Save your note" button clicked in modal, send and ajax call to save it
+$('.save-note').on('click', () => {
+	const title = $('#note-title').val().trim()
+	const body = $('#note-body').val().trim()
+
+	// Ajax call for saving the note
+	$.ajax({
+		method: 'POST',
+		url: '/notes',
+		data: { id: articleId, title: title, body: body }
+	}).then(data => {
+		console.log('Article saved in the collection!')
+	}) 
+	console.log('Note saved')
+	console.log(`articleId: ${articleId}`)
+})
 
 
 
