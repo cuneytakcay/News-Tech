@@ -36,8 +36,8 @@ $('#collection').on('click', () => {
 		method: 'GET',
 		url: '/articles'
 	}).then(data => {
-		// Reload the page to get the saved articles list
-    location.reload()
+		// Reload new page to get the saved articles list
+    location.assign('/articles')
     console.log('saved articles button sent ajax call')
 	})
 })
