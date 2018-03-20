@@ -3,9 +3,9 @@
 <!-- NAVBAR -->
 <div class="row" id="nav-bar">
 	<div class="col-12">
-		<span id="brand">NewsTech</span>
+		<a href="/" id="brand">NewsTech</a>
 		<button id="scraper" class="btn btn-success btn-lg float-right">Start Scraping</button>
-		<button id="collection" class="btn btn-dark btn-lg float-right">Saved Articles</button>
+		<button id="collection" data-state="{{ saved }}" class="btn btn-dark btn-lg float-right">Saved Articles</button>
   </div>
 </div>
 
@@ -21,15 +21,15 @@
 
 <!-- ARTICLES ARE LISTED HERE -->
 <div id="article-container" class="row">
-  {{#each articles}}
-  <div class="col-10">
-    <a href="{{ this.link }}" target="_blank">{{ this.title }}</a>
-  </div>
-  <div class="col-2">
-    <button data-title="{{ this.title }}" data-link="{{ this.link }}" class="btn btn-sm btn-danger float-right save-btn">Save article</button>
-  </div>
-  {{/each}}
+  {{#unless saved}}
+    {{> scraped}}
+  {{/unless}}
+
+  {{#if saved}}
+    {{> saved}}
+  {{/if}}
 </div>
+
 
 <!-- SCRIPTS FOR THE AJAX CALLS -->
 <script src="/js/app.js"></script>

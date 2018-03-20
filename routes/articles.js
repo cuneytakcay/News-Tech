@@ -23,5 +23,19 @@ router.post('/', (req, res, next) => {
     res.send('Collection created')
 })
 
+// GET route to find all saved articles in the collections
+router.get('/', (req, res, next) => {
+  // Grab articles from collections
+  db.Collection.find({})
+    .then(dbCollection => {
+      // Send collections data to be rendered
+      res.render('home', { articles: dbCollection, saved: true })
+    })
+    .catch(err => {
+      // If an error occurred, send it to the client
+      res.json(err)
+    })
+})
+
 // Export router
 module.exports = router
