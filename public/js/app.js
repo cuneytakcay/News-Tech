@@ -11,17 +11,22 @@ $('#scraper').on('click', () => {
   )
 })
 
-// When save article button is clicked, that article is saved in database
-$('.save-btn').on('click', 'button', () => {
-	// Save the id of the button
-	const id = $(this).attr('data-id')
+// When save article button is clicked, that article is saved in collection
+$(document).on('click', '.save-btn', function() {
+	// Save the title of the selected article
+	const title = $(this).attr('data-title')
+	const link = $(this).attr('data-link')
+
+	console.log(title)
+	console.log(link)
 
 	// Ajax call for the article
 	$.ajax({
-		method: 'GET',
-		url: '/articles/' + id
+		method: 'POST',
+		url: '/articles',
+		data: { title: title, link: link }
 	}).then((data) => {
-		console.log('Article was saved!')
+		console.log('Article was saved in the collection!')
 	}) 
 })
 
