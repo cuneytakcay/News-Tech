@@ -32,9 +32,14 @@ app.use('/scrape', scrape)
 app.use('/articles', article)
 app.use('/notes', note)
 
-// Set mongoose to use promises
-mongoose.Promise = Promise;
-mongoose.connect('mongodb://localhost/newstech')
+// Set mongoose database connection
+const databaseUri = 'mongodb://localhost/newstech'
+
+if (process.env.MONGODB_URI) {
+	mongoose.connect(process.env.MONGODB_URI)
+} else {
+	mongoose.connect(databaseUri)
+}
 
 // Catch 404 and forward to error handler
 app.use((req, res, next) => {
