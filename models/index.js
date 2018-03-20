@@ -1,5 +1,6 @@
 // Export all models in an object
 module.exports = {
-  Article: require("./Article"),
-  Note: require("./Note")
+  Article: require('./Article'),
+  Note: require('./Note'),
+  User: require('./User')
 }
