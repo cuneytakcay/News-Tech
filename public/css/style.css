@@ -17,7 +17,7 @@ a {
 }
 
 a:hover {
-	color: #ff0;
+	color: #28a745;
 	text-decoration: none;
 }
 
@@ -66,7 +66,54 @@ a:hover {
 	margin: 30px auto;
 }
 
-#article-container div {
+#article-container>div {
 	padding: 15px 10px 10px 10px;
 	border-bottom: 1px solid #bbb;
+}
+
+#article-container>div>a {
+	color: #333;
+}
+
+#article-container>div>a:hover {
+	color: #f00;
+}
+
+/* ============== MEDIA QUERIES ============== */
+@media screen and (max-width: 1000px) {
+  #intro {
+		width: 70%;
+	}
+}
+
+@media screen and (max-width: 860px) {
+  #intro {
+		width: 80%;
+	}
+}
+
+@media screen and (max-width: 775px) {
+  #intro {
+		width: 90%;
+	}
+
+	#article-container>div>a {
+		font-size: 80%;
+	}
+}
+
+@media screen and (max-width: 690px) {
+  h1 {
+		font-size: 200%;
+	}
+
+	#main-par {
+		font-size: 100%;
+	}
+}
+
+@media screen and (max-width: 464px) {
+	#title-div {
+		height: 400px;
+	}
 }
