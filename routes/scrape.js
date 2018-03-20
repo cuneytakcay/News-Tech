@@ -16,8 +16,6 @@ router.get('/', ( req, res, next ) => {
 		
 		const $ = cheerio.load(html)
 
-		//let articles = []
-
 		$('.c-entry-box--compact__title').each((i, element) => {
 			// Get title and link of the article and store in the article object
 			let article = {
@@ -25,7 +23,7 @@ router.get('/', ( req, res, next ) => {
 				link: $(element).children('a').attr('href')
 			}
 
-			//articles.push(article)
+			// Store articles in mongoDB 
 			db.Article.create(article)
 				.then((dbArticle) => {
 					console.log(dbArticle)
@@ -35,9 +33,10 @@ router.get('/', ( req, res, next ) => {
 				})
 		})
 
-		// JSON all scraped articles
+		// Send a message to the client after scraping is complete
 		res.send('Scraping was completed!')
 	})
 })
 
+// Export router
 module.exports = router
