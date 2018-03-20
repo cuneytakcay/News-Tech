@@ -3,10 +3,10 @@ $('#scraper').on('click', () => {
   $.ajax({
     method: 'GET',
     url: '/scrape'
-  }).then((data) => {
-      console.log('DONE!');
+  }).then(data => {
       // Reload the page to get the updated list
       location.reload()
+      console.log('start scraping button sent ajax call');
     }
   )
 })
@@ -17,17 +17,29 @@ $(document).on('click', '.save-btn', function() {
 	const title = $(this).attr('data-title')
 	const link = $(this).attr('data-link')
 
-	console.log(title)
-	console.log(link)
+	console.log(`Title: ${title}`)
+	console.log(`Link: ${link}`)
 
 	// Ajax call for the article
 	$.ajax({
 		method: 'POST',
 		url: '/articles',
 		data: { title: title, link: link }
-	}).then((data) => {
-		console.log('Article was saved in the collection!')
+	}).then(data => {
+		console.log('Article saved in the collection!')
 	}) 
+})
+
+// When Saved Articles button is clicked, send an ajax call to bring saved articles
+$('#collection').on('click', () => {
+	$.ajax({
+		method: 'GET',
+		url: '/articles'
+	}).then(data => {
+		// Reload the page to get the saved articles list
+    location.reload()
+    console.log('saved articles button sent ajax call')
+	})
 })
 
 
