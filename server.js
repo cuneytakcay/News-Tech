@@ -24,9 +24,11 @@ app.use(logger('dev'))
 // Require and use routes modules
 const index = require('./routes/index')
 const scrape = require('./routes/scrape')
+const article = require('./routes/articles')
 
 app.use('/', index)
 app.use('/scrape', scrape)
+app.use('/articles', article)
 
 // Set mongoose to use promises
 mongoose.Promise = Promise;
