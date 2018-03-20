@@ -1,4 +1,4 @@
-// When the Scrape button is clicked, send an ajax call to start scraping
+// When the "Start Scraping" button is clicked, send an ajax call to start scraping
 $('#scraper').on('click', () => {
   $.ajax({
     method: 'GET',
@@ -11,7 +11,7 @@ $('#scraper').on('click', () => {
   )
 })
 
-// When save article button is clicked, that article is saved in collection
+// When "Save Article" button is clicked, that article is saved in collection
 $(document).on('click', '.save-btn', function() {
 	// Save the title of the selected article
 	const title = $(this).attr('data-title')
@@ -30,7 +30,7 @@ $(document).on('click', '.save-btn', function() {
 	}) 
 })
 
-// When Saved Articles button is clicked, send an ajax call to bring saved articles
+// When "Saved Articles" button is clicked, send an ajax call to bring saved articles
 $('#collection').on('click', () => {
 	$.ajax({
 		method: 'GET',
@@ -42,6 +42,23 @@ $('#collection').on('click', () => {
 	})
 })
 
+// When "Delete Article" button is clicked, send an ajax call to delete it
+$(document).on('click', '.delete-btn', function() {
+	// Save the id of the selected article
+	const id = $(this).attr('data-id')
+
+	console.log(`id: ${id}`)
+
+	// Ajax call for the selected article
+	$.ajax({
+		method: 'DELETE',
+		url: '/articles',
+		data: { id: id }
+	}).then(data => {
+		location.reload()
+		console.log('Article deleted from the collection!')
+	}) 
+})
 
 
 
