@@ -18,7 +18,7 @@ router.get('/', ( req, res, next ) => {
 
 		$('.c-entry-box--compact__title').each((i, element) => {
 			// Get title and link of the article and store in the article object
-			let article = {
+			const article = {
 				title: $(element).children('a').text(),
 				link: $(element).children('a').attr('href')
 			}
