@@ -9,17 +9,15 @@ const db = require('../models')
 router.get('/', (req, res, next) => {
 	// Grab all articles from database
   db.Article.find({})
-    .then(function(dbArticle) {
-      // If successfully find Articles, send them to the homepage
-      //res.json(dbArticle);
-      res.render('home', { 
-      	articles: dbArticle
-      })
+    .then((dbArticle) => {
+      // Send articles data to be rendered
+      res.render('home', { articles: dbArticle })
     })
-    .catch(function(err) {
+    .catch((err) => {
       // If an error occurred, send it to the client
       res.json(err);
     });
 })
 
+// Export router
 module.exports = router
