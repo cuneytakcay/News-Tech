@@ -6,12 +6,12 @@ const Schema = mongoose.Schema
 
 // Create a new UserSchema object
 const ArticleSchema = new Schema({
-  // 'title' is required and of type String
+  // 'title' must be unique and of type String
   title: {
     type: String,
     unique: true
   },
-  // 'link' is required and of type String
+  // 'link' must be unique and of type String
   link: {
     type: String,
     unique: true

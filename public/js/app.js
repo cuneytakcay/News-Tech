@@ -1,3 +1,4 @@
+// When the Scrape button is clicked, send an ajax call to start scraping
 $('#scraper').on('click', () => {
   $.ajax({
     method: 'GET',
